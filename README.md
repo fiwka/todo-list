@@ -15,3 +15,9 @@ yarn tsc
 ```
 yarn start
 ```
+
+### Config path:
+
+```
+src/config.json
+```
