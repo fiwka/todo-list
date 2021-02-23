@@ -1,0 +1,9 @@
+{
+  "dbHost": "localhost",
+  "dbName": "todo_list",
+  "dbUser": "root",
+  "dbPassword": "",
+  "dbPort": 3306,
+  "port": 2021,
+  "sessionSecret": "test secret"
+}

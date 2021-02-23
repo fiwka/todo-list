@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Todo List - #{dashboard.name}
+        link(rel="stylesheet", href="/style.css")
+        script(src="https://kit.fontawesome.com/2a14008c42.js") 
+        script(src="/socket.io/socket.io.js")
+    body(data-dashboard-id=dashboard.id)
+        .nodes
+            div
+                h2.backlog Backlog
+                ul.node-list(data-index=0) 
+                    li
+                        button.button#blnt + New task
+                    if backlog && backlog.length > 0
+                        each node in backlog 
+                            li.node(draggable="true", data-list-index=0, data-node-id=node.id)  
+                                input(type="text", oninput="check(this, " + node.id + ")", value=node.name)
+                                button.due-data-button 
+                                    !=node.dueDate > 0 ? node.dueDate : '<i class="fas fa-table"></i>'
+            div
+                h2.in-progress In Progress 
+                ul.node-list(data-index=1) 
+                    li
+                        button.button#ipnt + New task
+                    if inProgress && inProgress.length > 0
+                        each node in inProgress 
+                            li.node(draggable="true", data-list-index=1, data-node-id=node.id) 
+                                input(type="text", oninput="check(this, " + node.id + ")", value=node.name)
+                                button.due-data-button 
+                                    !=node.dueDate > 0 ? node.dueDate : '<i class="fas fa-table"></i>'
+            div 
+                h2.done Done
+                ul.node-list(data-index=2)  
+                    li
+                        button.button#dnt + New task
+                    if done && done.length > 0
+                        each node in done
+                            li.node(draggable="true", data-list-index=2, data-node-id=node.id) 
+                                input(type="text", oninput="check(this, " + node.id + ")", value=node.name)
+                                button.due-data-button 
+                                    !=node.dueDate > 0 ? node.dueDate : '<i class="fas fa-table"></i>'
+            script(src="/dashboard_panel.js")
