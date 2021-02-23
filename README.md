@@ -2,7 +2,7 @@
 
 Simple todo list written on TypeScript, JavaScript and Pug.
 
-Start commands:
+### Start commands:
 
 ```
 yarn install
